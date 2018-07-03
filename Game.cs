@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Game
 {
 
-    //REMINDER TO TURN ON THE CAMERA AGAIN!!!!!! 
+  
 
 
     class Game : BaseApplication
@@ -24,7 +24,7 @@ namespace Game
         List<BlueGem> blueGemToRemove;
 
         List<RedGem> redGems;
-        List<RedGem> redGemToRemove; 
+        List<RedGem> redGemToRemove;
 
         List<LifePU> lifePus;
         List<LifePU> lifePuToRemove;
@@ -58,7 +58,7 @@ namespace Game
         Ground ground;
         Boundary border;
 
-   
+
 
         InputsManager inputManager = InputsManager.Instance;
 
@@ -67,7 +67,7 @@ namespace Game
         RedGem redGem;
 
         LifePU lifePu;
-        HealthPU healthPu; 
+        HealthPU healthPu;
 
         SceneNode cameraNode;
 
@@ -76,7 +76,7 @@ namespace Game
         Physics physics;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static void Main()
         {
@@ -94,12 +94,12 @@ namespace Game
             player = new Player(this.mSceneMgr);
 
             timer = new Timer();
-        
+
             gameHMD = new GameInterface(mSceneMgr, mWindow, player.Stats, timer);
 
             bombDropperGun = new BombDropperGun(mSceneMgr);
             ((PlayerModel)player.Model).AttachGun(bombDropperGun);
-            ///CAMERA 
+            ///CAMERA
             cameraNode = mSceneMgr.CreateSceneNode();
             cameraNode.AttachObject(mCamera);
             ///((PlayerModel)player.Model).Body.AddChild(cameraNode); //Tells it that you are expecting a player model instead of a character model. Called casting
@@ -117,10 +117,10 @@ namespace Game
 
             /////ENEMY MODEL
 
-            //enemy2 = new Enemy(this.mSceneMgr); 
+            //enemy2 = new Enemy(this.mSceneMgr);
 
             //enemy3 = new Enemy(this.mSceneMgr);
-            //enemy4 = new Enemy(this.mSceneMgr); 
+            //enemy4 = new Enemy(this.mSceneMgr);
 
             /////ENEMY POSITION
 
@@ -139,7 +139,7 @@ namespace Game
             spawnBlueGems();
 
             redGems = new List<RedGem>();
-            redGemToRemove = new List<RedGem>(); 
+            redGemToRemove = new List<RedGem>();
             spawnRedGems();
 
 
@@ -170,7 +170,7 @@ namespace Game
             spawnShieldPU();
 
             cannonBalls = new List<CannonBall>();
-            cannonBallToRemove = new List<CannonBall>(); 
+            cannonBallToRemove = new List<CannonBall>();
 
 
             ///ENEMIES
@@ -183,16 +183,16 @@ namespace Game
 
                 enemy = new Enemy(mSceneMgr, (PlayerStats)player.Stats);
                 enemy.SetPosition(new Vector3(x, 0, z));
-               
+
 
                 enemys.Add(enemy);
                 enemy.Movement.Walking();
 
             }
-            ///AddBomb(); 
+            ///AddBomb();
             bombs = new List<Bomb>();
             bombToRemove = new List<Bomb>();
-            spawnBombs(); 
+            spawnBombs();
 
 
 
@@ -201,7 +201,7 @@ namespace Game
             ground = new Ground(mSceneMgr);
             border = new Boundary(mSceneMgr);
             player.Model.GameNode.AttachObject(environment.Light);
-        
+
 
             ///cube.Quad();
 
@@ -211,7 +211,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns blue gems in random places. 
+        /// Spawns blue gems in random places.
         /// </summary>
         public void spawnBlueGems()
         {
@@ -234,7 +234,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns red gems in random places. 
+        /// Spawns red gems in random places.
         /// </summary>
         public void spawnRedGems()
         {
@@ -259,7 +259,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns time powerups in random places. 
+        /// Spawns time powerups in random places.
         /// </summary>
         public void spawnTimePU()
         {
@@ -282,7 +282,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns life powerups in random places. 
+        /// Spawns life powerups in random places.
         /// </summary>
         public void spawnLifePU()
         {
@@ -307,7 +307,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns health powerups in random places. 
+        /// Spawns health powerups in random places.
         /// </summary>
         public void spawnHealthPU()
         {
@@ -331,13 +331,13 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns shield powerups in random places. 
+        /// Spawns shield powerups in random places.
         /// </summary>
         public void spawnShieldPU()
         {
 
             if (((PlayerStats)player.Stats).Shield.Value == 0)
-            { 
+            {
                 Random rnd = new Random();
                 float x;
                 float z;
@@ -357,7 +357,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Spawns bombs powerups in random places. 
+        /// Spawns bombs powerups in random places.
         /// </summary>
         public void spawnBombs()
         {
@@ -373,7 +373,7 @@ namespace Game
                 bomb = new Bomb(mSceneMgr, (PlayerStats)player.Stats);
                     bomb.SetPosition(new Vector3(x, 0, z));
 
-             
+
 
                 bombs.Add(bomb);
             }
@@ -383,7 +383,7 @@ namespace Game
         /// </summary>
 
         /// <summary>
-        /// This method update the scene after a frame has finished rendering. This holds the updates for the Gems, the powerups, the player and the player's controller and the enemy updates. 
+        /// This method update the scene after a frame has finished rendering. This holds the updates for the Gems, the powerups, the player and the player's controller and the enemy updates.
         /// </summary>
         /// <param name="evt"></param>
         protected override void UpdateScene(FrameEvent evt)
@@ -395,7 +395,7 @@ namespace Game
             gameHMD.Update(evt);
 
             physics.UpdatePhysics(0.01f);
-            
+
             ///TIMER
             if (timerPUs.Count == 0)
             {
@@ -419,8 +419,8 @@ namespace Game
 
             if(bombs.Count == 0)
             {
-                spawnBombs(); 
-                
+                spawnBombs();
+
             }
 
             foreach (Bomb bomb in bombs)
@@ -441,10 +441,10 @@ namespace Game
             //GEMS
             if (blueGems.Count == 0)
             {
-                spawnBlueGems(); 
+                spawnBlueGems();
             }
 
-            
+
             foreach (BlueGem blueGem in blueGems)
             {
                 blueGem.Update(evt);
@@ -456,16 +456,16 @@ namespace Game
             foreach (BlueGem blueGem in blueGemToRemove)
             {
                 blueGems.Remove(blueGem);
-                blueGem.Dispose(); 
+                blueGem.Dispose();
             }
-            blueGemToRemove.Clear(); 
+            blueGemToRemove.Clear();
 
 
 
 
             if(redGems.Count == 0)
             {
-                spawnRedGems(); 
+                spawnRedGems();
             }
             foreach (RedGem redGem in redGems)
             {
@@ -478,7 +478,7 @@ namespace Game
             foreach (RedGem redGem in redGemToRemove)
             {
                 redGems.Remove(redGem);
-                redGem.Dispose(); 
+                redGem.Dispose();
 
             }
             redGemToRemove.Clear();
@@ -563,7 +563,7 @@ namespace Game
 
         }
 
-     
+
 
 
 
@@ -576,15 +576,15 @@ namespace Game
             ///base.CreateCamera();
             mCamera = mSceneMgr.CreateCamera("PlayerCam");
             mCamera.Position = new Vector3(0, 20, -100);
-            
+
             mCamera.LookAt(new Vector3(0, 0, 0));
             mCamera.NearClipDistance = 5;
             mCamera.FarClipDistance = 1000;
             mCamera.FOVy = new Degree(70);
 
             mCameraMan = new CameraMan(mCamera);
-            mCameraMan.Freeze = true; 
-            
+            mCameraMan.Freeze = true;
+
         }
 
         /// <summary>
@@ -595,7 +595,7 @@ namespace Game
             ///base.CreateViewports();
             Viewport viewport = mWindow.AddViewport(mCamera);
             viewport.BackgroundColour = ColourValue.Black;
-            mCamera.AspectRatio = viewport.ActualWidth / viewport.ActualHeight; 
+            mCamera.AspectRatio = viewport.ActualWidth / viewport.ActualHeight;
         }
 
         /// <summary>
@@ -633,7 +633,7 @@ namespace Game
             //    blueGem.Dispose();
             //}
 
-            physics.Dispose(); 
+            physics.Dispose();
 
 
         }
