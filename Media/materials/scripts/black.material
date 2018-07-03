@@ -1,0 +1,13 @@
+material black
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture morning_dn.jpg
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+material Wall
+{
+	technique
+	{
+		pass
+		{
+
+			texture_unit
+			{
+				texture brick.jpg
+			}
+		}
+	}
+}
